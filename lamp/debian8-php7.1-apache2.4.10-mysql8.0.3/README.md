@@ -4,12 +4,12 @@
 
 Build container:
 ```
-docker build -t dboetsch/lamp:php7.1-apache2.4.10-mysql8.0.3 /var/www/dockerhub/lamp/debian8-php7.1-apache2.4.10-mysql8.0.3/
+docker build -t lamp:php7.1-apache2.4.10-mysql8.0.3 .
 ```
 
 Run mysql from container:
 ```
-docker run -it --rm \
+docker run -it --rm lamp:php7.1-apache2.4.10-mysql8.0.3 \
     mysql sh -c 'exec mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -P"$MYSQL_PORT_3306_TCP_PORT" -uroot -p"$MYSQL_ENV_MYSQL_ROOT_PASSWORD"'
 ```
 
@@ -23,7 +23,7 @@ docker run -it --rm --name lamp \
     -v ~/lib/mysql:/var/lib/mysql \
     -p 8081:80 \
     -v /var/www:/var/www \
-    dboetsch/php7.1-apache2.4.10-mysql8.0.3
+    lamp:php7.1-apache2.4.10-mysql8.0.3
 ```
 
 ## Container mysql
